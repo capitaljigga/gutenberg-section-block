@@ -9,10 +9,10 @@ import ResizableBox from 're-resizable'
 import Section from './section-tag'
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
-const { 
-	PanelBody, 
+const {
+	PanelBody,
 	RangeControl,
-	Button, 
+	Button,
 	ResponsiveWrapper,
 	ToggleControl,
 	SelectControl,
@@ -50,7 +50,7 @@ export default ( props ) => {
 		} )
 	}
 
-	const { tagName, customBackgroundColor, customTextColor, resizeTopIsActive, resizeBottomIsActive, bgImage, bgOptions, enableSpacing } = attributes
+	const { tagName, sectionType, customBackgroundColor, customTextColor, resizeTopIsActive, resizeBottomIsActive, bgImage, bgOptions, enableSpacing } = attributes
 
 	return (
 		<Fragment>
@@ -223,7 +223,7 @@ export default ( props ) => {
 									}
 								)
 							}
-						}						
+						}
 					]}
 				/>
 			</InspectorControls>
@@ -237,11 +237,22 @@ export default ( props ) => {
 						{ label: 'footer', value: 'footer' },
 						{ label: 'div', value: 'div' },
 					] }
-					onChange={ ( tagName ) => { setAttributes( { tagName } ) } }				
+					onChange={ ( tagName ) => { setAttributes( { tagName } ) } }
+				/>
+                <SelectControl
+					label="Section Type"
+					value={ sectionType }
+					options={ [
+                        { label: 'Standard', value: '' },
+                        { label: 'Hero', value: 'hero'  },
+					] }
+					onChange={ ( sectionType ) => { setAttributes( { sectionType } ) } }
 				/>
 			</InspectorAdvancedControls>
+
 			<Section
 				tagName={tagName}
+                id={sectionType}
 				className={ props.className }
 				style={ {
 					backgroundColor: customBackgroundColor,
@@ -249,7 +260,7 @@ export default ( props ) => {
 				} }
 			>
 				{ !! bgImage && <div
-					className={ classnames( 
+					className={ classnames(
 						'section-bg', {
 							'bg__repeated': bgOptions.repeat,
 							'bg__stretched': bgOptions.stretch || bgOptions.fixed,

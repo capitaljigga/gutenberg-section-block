@@ -3,6 +3,10 @@ export default {
 		type: 'string',
 		default: 'section',
 	},
+	typeHero: {
+		type: 'string',
+		default: '',
+	},
 	enableSpacing: {
 		type: 'boolean',
 		default: false

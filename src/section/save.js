@@ -14,8 +14,9 @@ const {
 
 export default ( { attributes, className } ) => {
 
-	const { 
+	const {
 		tagName,
+		sectionType,
 		backgroundColor,
 		customTextColor,
 		customBackgroundColor,
@@ -25,8 +26,10 @@ export default ( { attributes, className } ) => {
 		bgOptions,
 		enableSpacing
 	} = attributes;
-	const backgroundClass = getColorClassName( 'background-color', backgroundColor );
-	const classes = classnames(
+
+    const backgroundClass = getColorClassName( 'background-color', backgroundColor );
+
+    const classes = classnames(
 		{
 			className,
 			[backgroundClass]: backgroundClass
@@ -40,9 +43,9 @@ export default ( { attributes, className } ) => {
 		paddingTop: (!! enableSpacing) && spacingTop ? spacingTop : undefined,
 	}
 	return (
-		<Section tagName={tagName} className={ classes ? classes : undefined } style={ styles }>
+		<Section tagName={tagName} id={ sectionType ? sectionType : undefined } className={ classes ? classes : undefined } style={ styles }>
 			{ !! bgImage && <div
-				className={ classnames( 
+				className={ classnames(
 					'section-bg', {
 						'bg__repeated': bgOptions.repeat,
 						'bg__stretched': bgOptions.stretch || bgOptions.fixed,
