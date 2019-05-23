@@ -50,7 +50,7 @@ export default ( props ) => {
 		} )
 	}
 
-	const { tagName, sectionType, customBackgroundColor, customTextColor, resizeTopIsActive, resizeBottomIsActive, bgImage, bgOptions, enableSpacing } = attributes
+	const { tagName, sectionType, innerWrapper, customBackgroundColor, customTextColor, resizeTopIsActive, resizeBottomIsActive, bgImage, bgOptions, enableSpacing } = attributes
 
 	return (
 		<Fragment>
@@ -248,6 +248,15 @@ export default ( props ) => {
 					] }
 					onChange={ ( sectionType ) => { setAttributes( { sectionType } ) } }
 				/>
+                <SelectControl
+                    label="Inner Wrapper"
+                    value={ innerWrapper }
+                    options={ [
+                        { label: 'Standard', value: 'container' },
+                        { label: 'Full Width', value: 'container-fluid'  },
+                    ] }
+                    onChange={ ( innerWrapper ) => { setAttributes( { innerWrapper } ) } }
+                />
 			</InspectorAdvancedControls>
 
 			<Section
@@ -307,7 +316,9 @@ export default ( props ) => {
 						} }
 					/>
 				}
-				<InnerBlocks />
+                <div class={innerWrapper}>
+                <InnerBlocks />
+                </div>
 				{ !! enableSpacing && <ResizableBox
 						className={ classnames( 'spacing-box', { 'resizing': resizeBottomIsActive } ) }
 						size={ {

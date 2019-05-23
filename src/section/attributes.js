@@ -7,6 +7,10 @@ export default {
 		type: 'string',
 		default: '',
 	},
+	innerWrapper: {
+		type: 'string',
+		default: 'container',
+	},
 	enableSpacing: {
 		type: 'boolean',
 		default: false

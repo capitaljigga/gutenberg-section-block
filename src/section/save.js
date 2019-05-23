@@ -16,6 +16,7 @@ export default ( { attributes, className } ) => {
 
 	const {
 		tagName,
+        innerWrapper,
 		sectionType,
 		backgroundColor,
 		customTextColor,
@@ -56,7 +57,9 @@ export default ( { attributes, className } ) => {
 					opacity: bgOptions.opacity
 				} }
 			/> }
-			<InnerBlocks.Content />
+            <div class={innerWrapper}>
+                <InnerBlocks.Content />
+            </div>
 		</Section>
 	);
 }

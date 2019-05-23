@@ -1,5 +1,5 @@
 const { createElement } = wp.element;
-export default function Section({tagName, id, className, style, children}){
+export default function Section({tagName, id, className, style, innerWrapper, children}){
 
 	return createElement(
 		tagName,
@@ -8,6 +8,7 @@ export default function Section({tagName, id, className, style, children}){
 			className: className,
 			style: style,
 		},
-		children
+		innerWrapper,
+		children,
 	)
 }
